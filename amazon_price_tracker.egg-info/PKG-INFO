@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: amazon_price_tracker
+Version: 0.1.0
+Requires-Dist: flask
+Requires-Dist: sqlalchemy
+Requires-Dist: gunicorn
+Requires-Dist: flask_sqlalchemy
