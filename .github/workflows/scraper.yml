@@ -25,7 +25,7 @@ jobs:
 
       - name: Set up Database URL and Secrets
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Use GitHub Secrets for security
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           FLASK_SECRET: ${{ secrets.FLASK_SECRET }}
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
