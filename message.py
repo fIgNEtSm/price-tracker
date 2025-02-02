@@ -5,8 +5,8 @@ SMTP_ADDRESS = os.environ.get("SMTP_ADDRESS")
 MY_EMAIL = os.environ.get("MY_EMAIL")
 MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
-def send_tracking_msg(to_email, url):
-    message = f"You've Started Tracking for {url}.\n\nThankyou for using our service."
+def send_msg(to_email, msg):
+    message = msg
     with SMTP(host=SMTP_ADDRESS, port=587) as connection:
         connection.starttls()
         connection.login(user=MY_EMAIL, password=MY_PASSWORD)

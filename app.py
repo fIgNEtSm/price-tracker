@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash
 from database import init_db, add_tracking, tracking_exists, get_all
-from message import send_tracking_msg
+from message import send_msg
 import os
 
 app = Flask(__name__)
@@ -20,7 +20,8 @@ def home():
             flash("You are already tracking this product.", "success")
         else:
             add_tracking(url=url, price=price, email=email)
-            send_tracking_msg(to_email=email, url=url)
+            message = f"You've Started Tracking for {url}.\n\nThankyou for using our service."
+            send_msg(to_email=email, msg=message)
             flash("Tracking started successfully.", "success")
         print(get_all())
     return render_template("main_page.html")
