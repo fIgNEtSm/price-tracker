@@ -18,8 +18,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Set up Database URL
         env:
@@ -30,4 +32,5 @@ jobs:
           SMTP_ADDRESS: ${{ secrets.SMTP_ADDRESS }}
 
       - name: Run Scraper
-        run: python scraper.py
+        run: |
+          python scraper.py
