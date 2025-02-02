@@ -15,6 +15,7 @@ def get_details(url):
 
     response = requests.get(url, headers=http_headers)
     website = response.text
+    print(website)
     try:
         soup = BeautifulSoup(website, 'html.parser')
         price = float(soup.find("span", class_="a-price-whole").text.replace(",", ""))
