@@ -23,14 +23,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Set up Database URL
+      - name: Set up Database URL and Secrets
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}  # Use GitHub Secrets for security
           FLASK_SECRET: ${{ secrets.FLASK_SECRET }}
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
           SMTP_ADDRESS: ${{ secrets.SMTP_ADDRESS }}
+        run: echo "Secrets are set."
 
       - name: Run Scraper
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          FLASK_SECRET: ${{ secrets.FLASK_SECRET }}
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          SMTP_ADDRESS: ${{ secrets.SMTP_ADDRESS }}
         run: |
           python scraper.py
