@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, flash
 from database import init_db, add_tracking, tracking_exists, get_all
+import os
 
 app = Flask(__name__)
-app.secret_key = "vishwaisgreat"
+app.secret_key = os.environ.get("FLASK_SECRET")
 
 init_db(app=app)
 
@@ -21,6 +22,3 @@ def home():
             flash("Tracking started successfully.", "success")
         print(get_all())
     return render_template("main_page.html")
-
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0')

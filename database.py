@@ -1,10 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
+import os
 
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 db = SQLAlchemy()
 
 def init_db(app):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://price_tracker_postgresql_user:yA04ULdjNEwDWd2fPpuVAvDKvMkBL9XN@dpg-cueg54lds78s73ae06s0-a.singapore-postgres.render.com/price_tracker_postgresql'
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
