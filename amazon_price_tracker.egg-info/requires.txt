@@ -1,4 +1,0 @@
-flask
-sqlalchemy
-gunicorn
-flask_sqlalchemy
