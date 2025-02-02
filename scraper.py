@@ -7,6 +7,7 @@ from message import send_msg
 
 with app.app_context():
     trackers = get_all()
+    print(trackers)
 
 def get_details(url):
     http_headers = {
